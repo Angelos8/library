@@ -37,11 +37,11 @@ function isRead(read){
 
 function printBookList(){
   table.innerHTML +=` <tr>
-                        <th>Title</th>
-                        <th>Author</th>
-                        <th>Pages</th>
-                        <th>Have been read</th>
-                        <th>Remove</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Author</th>
+                        <th scope="col">Pages</th>
+                        <th scope="col">Have been read</th>
+                        <th scope="col">Remove</th>
                       </tr>
   `
   for (let book in myLibrary){
@@ -52,9 +52,9 @@ function printBookList(){
                           <td>${myLibrary[book].author}</td>
                           <td>${myLibrary[book].pages}</td>
                           <td class='change-read'>
-                           <button id='bt${book}' value=change> ${readValue} </button>
+                           <button class="add" id='bt${book}' value=change> ${readValue} </button>
                           </td>
-                          <td> <button id=${book} value='delete'> Delete </button> </td>
+                          <td> <button class="add" id=${book} value='delete'> Delete </button> </td>
                         </tr>`
   }
 }
@@ -101,6 +101,7 @@ form.addEventListener('submit', (e)=>{
     table.innerHTML = '';
     printBookList();
     clearForm();
+    document.getElementById('form').style.display = 'none';
   }
 })
 
@@ -128,6 +129,16 @@ document.addEventListener('click',(e)=>{
     printBookList();
   }
 
+  if(buttonValue === 'cancel'){
+    clearForm();
+    document.getElementById('form').style.display = 'none';
+    
+  }
+
+  if (buttonValue === 'add'){
+    document.getElementById('form').style.display = 'block';
+    
+  }
 });
 
 
