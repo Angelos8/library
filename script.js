@@ -36,7 +36,8 @@ function isRead(read){
 }
 
 function printBookList(){
-  table.innerHTML +=` <tr>
+
+  table.innerHTML +=` <tr style='color: #579BB1;'>
                         <th scope="col">Title</th>
                         <th scope="col">Author</th>
                         <th scope="col">Pages</th>
@@ -46,8 +47,7 @@ function printBookList(){
   `
   for (let book in myLibrary){
     let readValue = isRead(myLibrary[book].read);
-    console.log('readValue = ', readValue);
-    table.innerHTML += `<tr>
+    table.innerHTML += `<tr >
                           <td>${myLibrary[book].title}</td>
                           <td>${myLibrary[book].author}</td>
                           <td>${myLibrary[book].pages}</td>
@@ -68,12 +68,6 @@ function addBookToLibrary() {
   let read = document.getElementById('checkbox').checked;
   let obj = new Book(title, author, pages, read);
   myLibrary.push(obj);
-  console.log(title);
-  console.log(author);
-  console.log(pages);
-  console.log(read);
-                      
-
 }
 
 function clearForm(){
@@ -114,10 +108,9 @@ form.addEventListener('submit', (e)=>{
 document.addEventListener('click',(e)=>{
   buttonID = e.target.id;
   buttonValue = e.target.value;
-  console.log(`button id = ${buttonID} and value of buttonID ${buttonValue}`);
+  // console.log(`button id = ${buttonID} and value of buttonID ${buttonValue}`);
   if (buttonValue == 'delete'){
     myLibrary.splice(Number(buttonID),1);
-    console.log(myLibrary);
     table.innerHTML = '';
     printBookList();
   }
@@ -142,10 +135,6 @@ document.addEventListener('click',(e)=>{
 });
 
 
-
-
-
-// PROJECT REQUIREMENTS: 6
 
 
 
